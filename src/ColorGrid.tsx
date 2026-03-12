@@ -4,6 +4,9 @@ import Papa, { type ParseResult } from "papaparse"; //
 interface ColorData {
     name: string;
     hex: string;
+    hue: number; //0-360
+    saturation: number; //0-100
+    value: number; //0-100
 }
 
 interface ColorGridProps {
@@ -46,19 +49,37 @@ export const ColorGrid = ({ keywords }: ColorGridProps) => {
 
     return (
         <section>
-            <header>
-                <h3>CSS/HTML Named Colors</h3>
-            </header>
             <div id="color-grid">
                 {filteredColors.map((row: ColorData, index: number) => (
                     <div key={index} className="color-block shadow">
                         <div
                             className="swatch"
                             style={{ backgroundColor: row.hex }}
-                        ></div>
+                        >
+                            <span style={{ color: "black" }}>
+                                {row.name}
+                            </span>
+                            <span style={{ color: "white" }}>
+                                {row.name}
+                            </span>
+                        </div>
                         <div className="details">
-                            <span>{row.name}</span>
-                            <span>{row.hex}</span>
+                            <span
+                                style={{
+                                    backgroundColor: "black",
+                                    color: row.hex,
+                                }}
+                            >
+                                {row.hex}
+                            </span>
+                            <span
+                                style={{
+                                    backgroundColor: "white",
+                                    color: row.hex,
+                                }}
+                            >
+                                {row.hex}
+                            </span>
                         </div>
                     </div>
                 ))}

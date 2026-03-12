@@ -4,7 +4,7 @@
 }
 
 #root > header {
-    background-color: black;
+    background-color: slategray;
     width: 100%;
     padding: 0.5em 0;
     box-shadow: 0px 3px 3px dimgray;
@@ -13,12 +13,14 @@
 header h1 {
     font-size: 1.85em;
     margin: 0.25em 0;
-    color: lightgray;
+    color: white;
 }
 
 header h2 {
     font-size: 1em;
     margin: 0;
+    color: aliceblue;
+    margin-bottom: 0.5em;
 }
 
 .card {
@@ -32,8 +34,8 @@ header h2 {
 
 .more-info {
     margin: 1em auto 0.75em auto;
-    font-size: 0.85em;
-    color: white;
+    font-size: 0.9em;
+    color: dimgrey;
 }
 
 .tool {
@@ -107,20 +109,22 @@ input[type="radio"]:checked + label {
 }
 
 .color-block {
-    min-width: 250px;
+    min-width: 264px;
     min-height: 88px;
     color: black;
     display: flex;
     justify-content: start;
     flex-direction: row;
     padding: 0.5em;
-    gap: 1em;
+    gap: 0.5em;
 }
 
 .color-block .swatch {
-    width: 88px;
+    width: 170px;
     height: 88px;
     border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
 }
 
 .color-block .details {
@@ -128,6 +132,12 @@ input[type="radio"]:checked + label {
     flex-direction: column;
     align-items: start;
     gap: 0.25em;
+    width: 90px;
+    flex-grow: 1;
+}
+.color-block .details span {
+    display: block;
+    width: 100%;
 }
 
 .shadow {

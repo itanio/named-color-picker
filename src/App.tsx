@@ -7,7 +7,7 @@ function App() {
     const [primarySort, setPrimarySort] = useState("hue");
     const [secondarySort, setSecondarySort] = useState("value");
 
-    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
         setKeywords(e.currentTarget.value);
     };
 
@@ -26,27 +26,26 @@ function App() {
             <header>
                 <h1>Named Color Picker</h1>
                 <h2>
-                    A tool for discovering and grabbing HTML and CSS
-                    friendly colors.
+                    Discover and grab friendly colors for your HTML/CSS.
                 </h2>
-                <p className="more-info">
-                    For more info, check out the{" "}
-                    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/named-color">
-                        MDN's &lt;named-color&gt; reference page
-                    </a>
-                    .
-                </p>
             </header>
             <main>
                 <div className="card shadow">
+                    <p className="more-info">
+                        For more info, check out the{" "}
+                        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/named-color">
+                            MDN's &lt;named-color&gt; reference page
+                        </a>
+                        .
+                    </p>
                     <div id="tools">
-                        <fieldset>
-                            <label htmlFor="search">Search:</label>
+                        <fieldset className="tool">
+                            <label htmlFor="filter">Filter by name:</label>
                             <input
-                                id="search"
+                                id="filter"
                                 type="text"
                                 value={keywords}
-                                onChange={handleSearch}
+                                onChange={handleFilter}
                             ></input>
                         </fieldset>
                         <div className="tool">
