@@ -1,12 +1,24 @@
 import { useState } from "react";
 import "./App.css";
-import Papa from "papaparse";
+import { ColorGrid } from "./ColorGrid";
 
 function App() {
     const [keywords, setKeywords] = useState("");
+    const [primarySort, setPrimarySort] = useState("hue");
+    const [secondarySort, setSecondarySort] = useState("value");
 
-    const handleSearch = (e) => {
-        setKeywords(e.target.value);
+    const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setKeywords(e.currentTarget.value);
+    };
+
+    const handlePrimarySort = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setPrimarySort(e.currentTarget.value);
+    };
+
+    const handleSecondarySort = (
+        e: React.ChangeEvent<HTMLInputElement>,
+    ) => {
+        setSecondarySort(e.currentTarget.value);
     };
 
     return (
@@ -26,17 +38,79 @@ function App() {
                 </p>
             </header>
             <main>
-                <div className="card">
-                    <fieldset>
-                        <label>Quick search:</label>
-                        <input
-                            type="text"
-                            value={keywords}
-                            onChange={handleSearch}
-                        ></input>
-                    </fieldset>
-                    <p>{keywords}</p>
+                <div className="card shadow">
+                    <div id="tools">
+                        <fieldset>
+                            <label htmlFor="search">Search:</label>
+                            <input
+                                id="search"
+                                type="text"
+                                value={keywords}
+                                onChange={handleSearch}
+                            ></input>
+                        </fieldset>
+                        <div className="tool">
+                            <fieldset className="radio-fieldset">
+                                <legend>Sort by:</legend>
+                                <fieldset>
+                                    <input
+                                        id="primary-sort-hue"
+                                        name="primary-sort"
+                                        type="radio"
+                                        value="hue"
+                                        checked={primarySort === "hue"}
+                                        onChange={handlePrimarySort}
+                                        defaultChecked
+                                    ></input>
+                                    <label htmlFor="primary-sort-hue">
+                                        Hue
+                                    </label>
+                                    <input
+                                        id="primary-sort-name"
+                                        name="primary-sort"
+                                        type="radio"
+                                        value="name"
+                                        checked={primarySort === "name"}
+                                        onChange={handlePrimarySort}
+                                    ></input>
+                                    <label htmlFor="primary-sort-name">
+                                        Name
+                                    </label>
+                                </fieldset>
+                            </fieldset>
+                            <fieldset className="radio-fieldset">
+                                <legend>then by:</legend>
+                                <fieldset>
+                                    <input
+                                        id="secondary-sort-value"
+                                        name="secondary-sort"
+                                        type="radio"
+                                        value="value"
+                                        checked={secondarySort === "value"}
+                                        onChange={handleSecondarySort}
+                                    ></input>
+                                    <label htmlFor="secondary-sort-value">
+                                        Value
+                                    </label>
+                                    <input
+                                        id="secondary-sort-saturation"
+                                        name="secondary-sort"
+                                        type="radio"
+                                        value="saturation"
+                                        checked={
+                                            secondarySort === "saturation"
+                                        }
+                                        onChange={handleSecondarySort}
+                                    ></input>
+                                    <label htmlFor="secondary-sort-saturation">
+                                        Saturation
+                                    </label>
+                                </fieldset>
+                            </fieldset>
+                        </div>
+                    </div>
                 </div>
+                <ColorGrid keywords={keywords} />
             </main>
         </>
     );

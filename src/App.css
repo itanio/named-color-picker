@@ -3,7 +3,7 @@
     width: 100%;
 }
 
-header {
+#root > header {
     background-color: black;
     width: 100%;
     padding: 0.5em 0;
@@ -22,8 +22,8 @@ header h2 {
 }
 
 .card {
-    padding: 2em;
-    background: white;
+    padding: 0.75em 1.5em;
+    background: ghostwhite;
     max-width: 65ch;
     margin: 1em auto;
     color: black;
@@ -34,4 +34,102 @@ header h2 {
     margin: 1em auto 0.75em auto;
     font-size: 0.85em;
     color: white;
+}
+
+.tool {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.25em;
+}
+
+.radio-fieldset legend {
+    display: block;
+    float: left;
+    font-weight: bold;
+    color: dimgray;
+}
+
+.radio-fieldset fieldset {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0;
+    gap: 0;
+    padding: 3px;
+    margin-inline: 0;
+    margin: 0;
+}
+
+.radio-fieldset fieldset label {
+    background: lightgray;
+    padding: 0.25em 0.75em;
+    margin: 0;
+    cursor: pointer;
+    border-left: 1px solid dimgray;
+    border-right: 1px solid dimgray;
+    box-shadow: 0px 1px 2px dimgrey;
+    user-select: none;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+input[type="radio"]:checked + label {
+    background-color: steelblue;
+    color: white;
+}
+
+.radio-fieldset fieldset label:hover {
+    background-color: deepskyblue;
+    color: white;
+}
+
+.radio-fieldset fieldset label:first-of-type {
+    border-radius: 99em 0 0 99em;
+    border-left: none;
+}
+
+.radio-fieldset fieldset label:last-of-type {
+    border-radius: 0 99em 99em 0;
+    border-right: none;
+}
+
+#color-grid {
+    display: flex;
+    column-gap: 0.5em;
+    row-gap: 0.5em;
+    color: gray;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.color-block {
+    min-width: 250px;
+    min-height: 88px;
+    color: black;
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    padding: 0.5em;
+    gap: 1em;
+}
+
+.color-block .swatch {
+    width: 88px;
+    height: 88px;
+    border-radius: 0.5em;
+}
+
+.color-block .details {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 0.25em;
+}
+
+.shadow {
+    box-shadow: 0px 2px 3px dimgrey;
 }
